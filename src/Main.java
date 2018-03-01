@@ -25,10 +25,10 @@ public class Main {
         int rideCount = Integer.parseInt(firstLine[3]);
         int bonus = Integer.parseInt(firstLine[4]);
         int turn = Integer.parseInt(firstLine[5]);
-
+        int rideID = 0;
         while ((st = br.readLine()) != null) {
             String[] tempLine = st.split(" ");
-            rides.add(new Ride(tempLine));
+            rides.add(new Ride(tempLine,rideID++));
         }
         for (int i = 0; i < vehicleCount; i++) {
             vehicles.add(new Vehicle(new LinkedList<Integer>(), 0, 0, true));

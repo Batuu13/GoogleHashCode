@@ -22,10 +22,11 @@ public class Vehicle {
             public int compare(Ride o1, Ride o2) {
                 int score1 = Math.abs(o1.x1 - currX) + Math.abs(o1.y1 - currY);
                 int score2 = Math.abs(o2.x1 - currX) + Math.abs(o2.y1 - currY);
-                if(score1 > score2){
+                System.out.println(score1 + " " +score2);
+                if(score1 < score2){
                     return -1;
                 }
-                if(score1 < score2){
+                if(score1 > score2){
                     return 1;
                 }
                 else{
@@ -41,20 +42,25 @@ public class Vehicle {
 
             }
         });
-
         for(int i = 0 ; i < rides.size(); i++){
+            System.out.println(rides.get(i).rideId);
+        }
+        System.out.println("--");
+        for(int i = 0 ; i < rides.size(); i++){
+
             int timeToGetThere = rides.get(i).getDistance(currX,currY);
             int timeOnRoad = rides.get(i).getRoadLength();
             int waitingTime = rides.get(i).startTime - (timeToGetThere + currentTime);
-            if(timeToGetThere + timeOnRoad + waitingTime < rides.get(i).finishTime)
+            if(timeToGetThere + timeOnRoad + waitingTime + currentTime < rides.get(i).finishTime)
             {
+                System.out.println(rides.get(i).rideId);
                 return rides.get(i);
             }
         }
         return null;
     }
     public boolean checkIsFinished(){
-        System.out.println(currentRide);
+
         if(currentRide.x2 == currX && currentRide.y2 == currX){
             return true;
         }
