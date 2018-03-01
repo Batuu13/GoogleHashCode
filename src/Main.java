@@ -29,15 +29,9 @@ public class Main {
         while ((st = br.readLine()) != null) {
             String[] tempLine = st.split(" ");
             rides.add(new Ride(tempLine));
-
-
-            for (int i = 0; i < vehicleCount; i++) {
-                vehicles.add(new Vehicle(new int[]{}, 0, 0, true));
-
-
-
-
-            }
+        }
+        for (int i = 0; i < vehicleCount; i++) {
+            vehicles.add(new Vehicle(new int[]{}, 0, 0, true));
         }
     }
 }
