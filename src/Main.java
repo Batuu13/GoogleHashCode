@@ -51,14 +51,25 @@ public class Main {
                 }
             }
         }
-        //vehicles.forEach(vehicle -> vehicle.printRides());
+        PrintWriter out = new PrintWriter(new FileWriter("output.txt"));
+        for (Vehicle vehicle:vehicles) {
+            out.print(vehicle.rides.size() + " ");
+            for (Integer ride:vehicle.rides) {
+                out.print(ride.toString());
+            }
+            out.println();
+        }
+        out.close();
     }
-    public static int getRideIndex(Ride ride){
-        for(int i = 0 ; i< rides.size(); i++){
-            if(ride.rideId == rides.get(i).rideId)
+    public static int getRideIndex(Ride ride) {
+        for (int i = 0; i < rides.size(); i++) {
+            if (ride.rideId == rides.get(i).rideId)
                 return i;
         }
         return -1;
     }
-}
+
+
+    }
+
 
