@@ -51,6 +51,9 @@ public class Vehicle {
             int timeToGetThere = rides.get(i).getDistance(currX,currY);
             int timeOnRoad = rides.get(i).getRoadLength();
             int waitingTime = rides.get(i).startTime - (timeToGetThere + currentTime);
+            if (waitingTime < 0) {
+                waitingTime = 0;
+            }
             if(timeToGetThere + timeOnRoad + waitingTime + currentTime < rides.get(i).finishTime)
             {
                 System.out.println(rides.get(i).rideId);
