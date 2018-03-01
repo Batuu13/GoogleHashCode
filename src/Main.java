@@ -36,16 +36,22 @@ public class Main {
 
         for (int i = 0; i < turn; i++) {
             for (Vehicle vehicle: vehicles) {
-                vehicle.checkIsFinished();
+                if(vehicle.currentRide != null && vehicle.checkIsFinished()) {
+                    vehicle.isAvailable = true;
+                }
                 if(vehicle.isAvailable) {
                    Ride ride = vehicle.getRide(rides, i, bonus);
+                   if (ride == null) {
+                       break;
+                   }
                    vehicle.rides.add(ride.rideId);
+                   rides.remove(vehicle.currentRide);
                    vehicle.currentRide = ride;
                    vehicle.isAvailable = false;
-
                 }
             }
         }
+        vehicles.forEach(vehicle -> System.out.println(vehicle.rides.toString()));
     }
 }
 

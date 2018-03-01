@@ -53,10 +53,12 @@ public class Vehicle {
         }
         return null;
     }
-    public void checkIsFinished(){
+    public boolean checkIsFinished(){
+        System.out.println(currentRide);
         if(currentRide.x2 == currX && currentRide.y2 == currX){
-            isAvailable = true;
+            return true;
         }
+        return false;
     }
     private int bonusValue(Ride ride,int currentTime,int bonus){
         int timeToGetThere = ride.getDistance(currX,currY);
