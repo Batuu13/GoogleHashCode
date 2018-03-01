@@ -51,7 +51,15 @@ public class Main {
                 }
             }
         }
-        vehicles.forEach(vehicle -> System.out.println(vehicle.rides.toString()));
+        PrintWriter out = new PrintWriter(new FileWriter("output.txt"));
+        for (Vehicle vehicle:vehicles) {
+            out.print(vehicle.rides.size() + " ");
+            for (Integer ride:vehicle.rides) {
+                out.print(ride.toString());
+            }
+            out.println();
+        }
+        out.close();
     }
 }
 
