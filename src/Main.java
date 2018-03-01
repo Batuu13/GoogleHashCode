@@ -45,13 +45,20 @@ public class Main {
                        break;
                    }
                    vehicle.rides.add(ride.rideId);
-                   rides.remove(vehicle.currentRide);
                    vehicle.currentRide = ride;
+                   rides.remove(getRideIndex(vehicle.currentRide));
                    vehicle.isAvailable = false;
                 }
             }
         }
-        vehicles.forEach(vehicle -> System.out.println(vehicle.rides.toString()));
+        //vehicles.forEach(vehicle -> vehicle.printRides());
+    }
+    public static int getRideIndex(Ride ride){
+        for(int i = 0 ; i< rides.size(); i++){
+            if(ride.rideId == rides.get(i).rideId)
+                return i;
+        }
+        return -1;
     }
 }
 

@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Vehicle {
-    LinkedList<Integer> rides;
+    LinkedList<Integer> rides = new LinkedList<>();
     int currX;
     int currY;
     boolean isAvailable;

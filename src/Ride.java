@@ -15,7 +15,14 @@ public class Ride {
         this.startTime = Integer.parseInt(data[4]);
         this.finishTime = Integer.parseInt(data[5]);
     }
-
+    @Override
+    public boolean equals(Object o) {
+        System.out.println(((Ride)o).rideId);
+        if(((Ride)o).rideId == this.rideId){
+            return true;
+        }
+        return false;
+    }
     public Integer getDistance(Integer x,Integer y){
         return Math.abs(x-this.x1) + Math.abs(y-this.y1);
     }
