@@ -8,7 +8,7 @@ public class Vehicle {
     int currY;
     boolean isAvailable;
     public Ride currentRide;
-
+    public int remTime;
     public Vehicle(LinkedList<Integer> rides, int currX, int currY, boolean isAvailable) {
         this.rides = rides;
         this.currX = currX;
@@ -22,7 +22,7 @@ public class Vehicle {
             public int compare(Ride o1, Ride o2) {
                 int score1 = Math.abs(o1.x1 - currX) + Math.abs(o1.y1 - currY);
                 int score2 = Math.abs(o2.x1 - currX) + Math.abs(o2.y1 - currY);
-                System.out.println(score1 + " " +score2);
+                //System.out.println(score1 + " " +score2);
                 if(score1 < score2){
                     return -1;
                 }
@@ -42,10 +42,8 @@ public class Vehicle {
 
             }
         });
-        for(int i = 0 ; i < rides.size(); i++){
-            System.out.println(rides.get(i).rideId);
-        }
-        System.out.println("--");
+
+
         for(int i = 0 ; i < rides.size(); i++){
 
             int timeToGetThere = rides.get(i).getDistance(currX,currY);
@@ -56,15 +54,20 @@ public class Vehicle {
             }
             if(timeToGetThere + timeOnRoad + waitingTime + currentTime < rides.get(i).finishTime)
             {
-                System.out.println(rides.get(i).rideId);
+
+                remTime = timeToGetThere + timeOnRoad + waitingTime;
                 return rides.get(i);
             }
         }
         return null;
     }
+    public void move(){
+        if(remTime >0)
+            remTime--;
+    }
     public boolean checkIsFinished(){
 
-        if(currentRide.x2 == currX && currentRide.y2 == currX){
+        if(remTime == 0){
             return true;
         }
         return false;

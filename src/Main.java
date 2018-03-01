@@ -7,7 +7,7 @@ public class Main {
     public static LinkedList<Vehicle> vehicles = new LinkedList<>();
 
     public static void main(String[] args) throws IOException {
-        File file = new File("a_example.in");
+        File file = new File("d_metropolis.in");
 
         BufferedReader br = null;
         try {
@@ -36,26 +36,31 @@ public class Main {
 
         for (int i = 0; i < turn; i++) {
             for (Vehicle vehicle: vehicles) {
+                vehicle.move();
                 if(vehicle.currentRide != null && vehicle.checkIsFinished()) {
                     vehicle.isAvailable = true;
                 }
                 if(vehicle.isAvailable) {
                    Ride ride = vehicle.getRide(rides, i, bonus);
                    if (ride == null) {
+
                        break;
                    }
                    vehicle.rides.add(ride.rideId);
                    vehicle.currentRide = ride;
-                   rides.remove(getRideIndex(vehicle.currentRide));
+                   int index = getRideIndex(vehicle.currentRide);
+                   vehicle.currX = vehicle.currentRide.x2;
+                   vehicle.currY = vehicle.currentRide.y2;
+                   rides.remove(index);
                    vehicle.isAvailable = false;
                 }
             }
         }
-        PrintWriter out = new PrintWriter(new FileWriter("output.txt"));
+        PrintWriter out = new PrintWriter(new FileWriter("d_metropolis.out"));
         for (Vehicle vehicle:vehicles) {
             out.print(vehicle.rides.size() + " ");
             for (Integer ride:vehicle.rides) {
-                out.print(ride.toString());
+                out.print(ride.toString() + " ");
             }
             out.println();
         }
