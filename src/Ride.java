@@ -1,11 +1,11 @@
 public class Ride {
-    int rideId; // row number
-    public Integer x1;
-    public Integer x2;
-    public Integer y1;
-    public Integer y2;
-    public Integer startTime;
-    public Integer finishTime;
+    public int rideId; // row number
+    public int x1;
+    public int x2;
+    public int y1;
+    public int y2;
+    public int startTime;
+    public int finishTime;
 
     public Ride(String[] data){
         this.x1 = Integer.parseInt(data[0]);
@@ -18,5 +18,8 @@ public class Ride {
 
     public Integer getDistance(Integer x,Integer y){
         return Math.abs(x-this.x1) + Math.abs(y-this.y1);
+    }
+    public Integer getRoadLength(){
+        return Math.abs(this.x2-this.x1) + Math.abs(this.y2-this.y1);
     }
 }
