@@ -6,7 +6,7 @@ public class Vehicle {
     int currX;
     int currY;
     boolean isAvailable;
-
+    public Ride currentRide;
     public Vehicle(int[] rides, int currX, int currY, boolean isAvailable) {
         this.rides = rides;
         this.currX = currX;
@@ -50,6 +50,11 @@ public class Vehicle {
             }
         }
         return null;
+    }
+    public void checkIsFinished(){
+        if(currentRide.x2 == currX && currentRide.y2 == currX){
+            isAvailable = true;
+        }
     }
     private int bonusValue(Ride ride,int currentTime,int bonus){
         int timeToGetThere = ride.getDistance(currX,currY);
