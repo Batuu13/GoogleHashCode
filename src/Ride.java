@@ -7,13 +7,14 @@ public class Ride {
     public int startTime;
     public int finishTime;
 
-    public Ride(String[] data){
+    public Ride(String[] data,int id){
         this.x1 = Integer.parseInt(data[0]);
-        this.x2 = Integer.parseInt(data[1]);
-        this.y1 = Integer.parseInt(data[2]);
+        this.y1 = Integer.parseInt(data[1]);
+        this.x2 = Integer.parseInt(data[2]);
         this.y2 = Integer.parseInt(data[3]);
         this.startTime = Integer.parseInt(data[4]);
         this.finishTime = Integer.parseInt(data[5]);
+        rideId = id;
     }
     @Override
     public boolean equals(Object o) {
