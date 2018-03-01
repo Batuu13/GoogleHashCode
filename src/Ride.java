@@ -1,4 +1,5 @@
 public class Ride {
+    int rideId; // row number
     public Integer x1;
     public Integer x2;
     public Integer y1;
