@@ -1,13 +1,15 @@
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Vehicle {
-    int[] rides;
+    LinkedList<Integer> rides;
     int currX;
     int currY;
     boolean isAvailable;
     public Ride currentRide;
-    public Vehicle(int[] rides, int currX, int currY, boolean isAvailable) {
+
+    public Vehicle(LinkedList<Integer> rides, int currX, int currY, boolean isAvailable) {
         this.rides = rides;
         this.currX = currX;
         this.currY = currY;

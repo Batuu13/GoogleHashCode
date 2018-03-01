@@ -31,7 +31,20 @@ public class Main {
             rides.add(new Ride(tempLine));
         }
         for (int i = 0; i < vehicleCount; i++) {
-            vehicles.add(new Vehicle(new int[]{}, 0, 0, true));
+            vehicles.add(new Vehicle(new LinkedList<Integer>(), 0, 0, true));
+        }
+
+        for (int i = 0; i < turn; i++) {
+            for (Vehicle vehicle: vehicles) {
+                vehicle.checkIsFinished();
+                if(vehicle.isAvailable) {
+                   Ride ride = vehicle.getRide(rides, i, bonus);
+                   vehicle.rides.add(ride.rideId);
+                   vehicle.currentRide = ride;
+                   vehicle.isAvailable = false;
+
+                }
+            }
         }
     }
 }
